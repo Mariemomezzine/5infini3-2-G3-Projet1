@@ -1,0 +1,49 @@
+version: '3'
+services:
+  # Spring Boot application
+  backend-app:
+    image: test:latest
+    container_name: achat
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/achatdb?useUnicode=true&useJDBCCompliantTimezoneShift=true&createDatabaseIfNotExist=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root
+      NEXUS_USERNAME: admin
+      NEXUS_PASSWORD: Ijnuhbygv123.
+    ports:
+      - "8089:8089"
+   
+    depends_on:
+      mysql:
+        condition: service_healthy
+    networks:
+      - network1
+
+  # MySQL database
+  mysql:
+    image: mysql:latest
+    container_name: db
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: root
+    
+    ports:
+      - "3306:3306"
+    networks:
+      - network1
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+   #Angular app
+#  front-app:
+#    image: front-app:latest
+ #   container_name: front-end
+ #   ports:
+   #   - "4200:4200"
+   # networks:
+   #   - network1
+networks:
+  network1:
