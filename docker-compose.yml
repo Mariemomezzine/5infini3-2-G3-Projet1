@@ -2,8 +2,8 @@ version: '3'
 services:
   # Spring Boot application
   backend-app:
-    image: test:latest
-    container_name: achat
+    image: mariemomezzine/test
+    container_name: stationSki
     environment:
     
       SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/stationSki?createDatabaseIfNotExist=true
