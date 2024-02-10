@@ -1,0 +1,30 @@
+version: "2.4"
+#-------------------------------- volumes----------------------------------------
+volumes:
+  db:
+  #--------------------------------services----------------------------------------
+services:
+  Etudiantservice:
+    image: bensaadadhia-5infini2-g3-ski
+    restart: always
+    depends_on:
+      - mysqlski
+    ports:
+      - 8089:8089
+    environment:
+      - spring.datasource.url=jdbc:mysql://localhost:3306/stationSki?createDatabaseIfNotExist=true
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=
+    #-------------------------------- database ----------------------------------------
+
+  mysqlski:
+    container_name: mysqlski
+    image: mysql
+    restart: always
+    volumes:
+      - db:/var/lib/mysql
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_DATABASE: stationSki
+      MYSQL_ROOT_PASSWORD: root
