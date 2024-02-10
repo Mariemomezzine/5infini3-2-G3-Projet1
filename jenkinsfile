@@ -56,9 +56,9 @@ pipeline {
 
                                    echo 'Run Spring && MySQL Containers'
                                         }
-                                    }
+                                    }*/
              }
-*/
+
     post {
         success {
             echo 'Build successfully'
