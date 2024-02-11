@@ -40,15 +40,15 @@ pipeline {
                 sh ' docker build -t $DOCKER_IMAGE_NAME:$DOCKER_IMAGE_TAG -f Dockerfile ./'
                       }
         }
-/*
+
            stage('dockerhub') {
                                   steps {
 
-                             sh "docker login -u lotfi0310 -p lotfidevops"
-                             sh "docker tag $DOCKER_IMAGE_NAME:$DOCKER_IMAGE_TAG lotfi0310/lotfilouiz-5twin4-g2-kaddem:$DOCKER_IMAGE_TAG"
-                             sh "docker push  lotfi0310/lotfilouiz-5twin4-g2-kaddem:$DOCKER_IMAGE_TAG"
+                             sh "docker login -u bensaadadhia -p 123456789"
+                             sh "docker tag $DOCKER_IMAGE_NAME:$DOCKER_IMAGE_TAG bensaadadhia/dhiabensaada-5infini2-g3-stationski:$DOCKER_IMAGE_TAG"
+                             sh "docker push  bensaadadhia/dhiabensaada-5infini2-g3-stationski:$DOCKER_IMAGE_TAG"
                                   }
-            }*/
+            }
              stage('Run Spring && MySQL Containers') {
                                  steps {
 
