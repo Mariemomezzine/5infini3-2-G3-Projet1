@@ -16,18 +16,18 @@ pipeline {
                 sh 'mvn clean package -DskipTests '
             }
         }
-      /*  stage('Test with Maven') {
+       stage('Test with Maven') {
                                steps {
                                        sh 'mvn test'
                                      }
                                  }
 
-        stage('lotfi SonarQube ') {
+        stage('dhia SonarQube ') {
              steps {
                     sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=sonar'
                    }
              }
-
+/*
         stage('Deploy') {
              steps {
                     sh 'mvn deploy -DskipTests=true'
