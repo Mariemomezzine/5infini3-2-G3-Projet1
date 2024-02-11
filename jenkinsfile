@@ -16,12 +16,12 @@ pipeline {
                 sh 'mvn clean package -DskipTests '
             }
         }
-    /* stage('Test with Maven') {
+     stage('Test with Maven') {
                                steps {
                                        sh 'mvn test'
                                      }
-                                 }*/
-/*
+                                 }
+
         stage('dhia SonarQube ') {
              steps {
                     sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=sonar'
@@ -32,8 +32,7 @@ pipeline {
              steps {
                     sh 'mvn deploy -DskipTests=true'
                          }
-                     }
-*/
+
         stage('building docker image')
         {
              steps {
