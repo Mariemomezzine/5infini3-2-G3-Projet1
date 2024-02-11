@@ -5,7 +5,7 @@ volumes:
   #--------------------------------services----------------------------------------
 services:
   InstructorService:
-    image: dhiabensaada-5infini2-g3-stationski:v41
+    image: dhiabensaada-5infini2-g3-stationski:v42
     restart: always
     depends_on:
       - mysqlski
