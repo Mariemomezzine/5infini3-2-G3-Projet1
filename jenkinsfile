@@ -2,7 +2,7 @@ pipeline {
     agent any
     environment {
         DOCKER_IMAGE_NAME = 'dhiabensaada-5infini2-g3-stationski'
-        DOCKER_IMAGE_TAG = "v${BUILD_NUMBER}" // Using Jenkins BUILD_NUMBER as the tag
+        DOCKER_IMAGE_TAG = "v${BUILD_NUMBER}"
     }
     stages {
         stage('Checkout') {
@@ -21,7 +21,7 @@ pipeline {
                                        sh 'mvn test'
                                      }
                                  }*/
-
+/*
         stage('dhia SonarQube ') {
              steps {
                     sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=sonar'
@@ -33,11 +33,11 @@ pipeline {
                     sh 'mvn deploy -DskipTests=true'
                          }
                      }
-
+*/
         stage('building docker image')
         {
              steps {
-                sh 'sudo docker build -t $DOCKER_IMAGE_NAME:$DOCKER_IMAGE_TAG -f dockerfile ./'
+                sh 'sudo docker build -t $DOCKER_IMAGE_NAME:$DOCKER_IMAGE_TAG -f Dockerfile ./'
                       }
         }
 /*
