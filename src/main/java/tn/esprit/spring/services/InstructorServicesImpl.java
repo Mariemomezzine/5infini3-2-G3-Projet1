@@ -19,7 +19,9 @@ public class InstructorServicesImpl implements IInstructorServices{
     private ICourseRepository courseRepository;
 
     @Override
-    public Instructor addInstructor(Instructor instructor) {
+
+    public Instructor addInstructor(Instructor instructor)
+    {
         return instructorRepository.save(instructor);
     }
 
