@@ -1,9 +1,9 @@
 pipeline {
     agent any
-   /* environment {
-        DOCKER_IMAGE_NAME = 'lotfilouiz-5twin4-g2-kaddem'
+    environment {
+        DOCKER_IMAGE_NAME = 'dhiabensaada-5infini2-g3-stationski'
         DOCKER_IMAGE_TAG = "v${BUILD_NUMBER}" // Using Jenkins BUILD_NUMBER as the tag
-    }*/
+    }
     stages {
         stage('Checkout') {
             steps {
@@ -33,14 +33,14 @@ pipeline {
                     sh 'mvn deploy -DskipTests=true'
                          }
                      }
-/*
+
         stage('building docker image')
         {
              steps {
                 sh 'docker build -t $DOCKER_IMAGE_NAME:$DOCKER_IMAGE_TAG -f Dockerfile ./'
                       }
         }
-
+/*
            stage('dockerhub') {
                                   steps {
 
