@@ -27,13 +27,13 @@ pipeline {
                     sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=sonar'
                    }
              }
-/*
+
         stage('Deploy') {
              steps {
                     sh 'mvn deploy -DskipTests=true'
                          }
                      }
-
+/*
         stage('building docker image')
         {
              steps {
