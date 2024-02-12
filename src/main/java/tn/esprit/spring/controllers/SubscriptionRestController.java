@@ -18,7 +18,7 @@ import java.util.Set;
 @RequestMapping("/subscription")
 @RequiredArgsConstructor
 public class SubscriptionRestController {
-    @InjectMocks
+
     private final ISubscriptionServices subscriptionServices;
 
     @Operation(description = "Add Subscription ")
