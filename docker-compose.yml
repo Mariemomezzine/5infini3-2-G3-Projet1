@@ -26,7 +26,7 @@ services:
 
     spring_app:
       container_name: dhiabensaada-5infini2-g3-stationski
-      image: dhiabensaada-5infini2-g3-stationski:v60
+      image: dhiabensaada-5infini2-g3-stationski:v61
       restart: on-failure
       build: .
       ports:
