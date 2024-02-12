@@ -2,6 +2,10 @@ package tn.esprit.spring.services;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import tn.esprit.spring.entities.Skier;
@@ -17,7 +21,11 @@ import java.util.Set;
 @Slf4j
 @AllArgsConstructor
 @Service
+
+
+
 public class SubscriptionServicesImpl implements ISubscriptionServices{
+
 
     private ISubscriptionRepository subscriptionRepository;
 
