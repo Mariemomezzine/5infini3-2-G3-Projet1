@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import tn.esprit.spring.entities.Course;
 import tn.esprit.spring.entities.Instructor;
 import tn.esprit.spring.repositories.ICourseRepository;
 import tn.esprit.spring.repositories.IInstructorRepository;
@@ -12,10 +13,10 @@ import tn.esprit.spring.services.InstructorServicesImpl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 
@@ -62,6 +63,59 @@ import static org.mockito.Mockito.*;
         verify(instructorRepository, times(1)).findAll();
     }
 
+     @Test
+     void testUpdateInstructor() {
+         Instructor instructor = new Instructor(); // create an instructor object
 
+         // Mocking the behavior of the repository
+         when(instructorRepository.save(instructor)).thenReturn(instructor);
 
+         // Call the method and verify the behavior
+         Instructor updatedInstructor = instructorServices.updateInstructor(instructor);
+
+         // Assert the result
+         assertEquals(instructor, updatedInstructor);
+
+         // Verify that the save method of the repository was called once
+         verify(instructorRepository, times(1)).save(instructor);
+     }
+
+     @Test
+     void testRetrieveInstructor() {
+         long numInstructor = 1L;
+
+         // Mocking the behavior of the repository
+         when(instructorRepository.findById(numInstructor)).thenReturn(Optional.of(new Instructor()));
+
+         // Call the method and verify the behavior
+         Instructor retrievedInstructor = instructorServices.retrieveInstructor(numInstructor);
+
+         // Assert the result
+         assertNotNull(retrievedInstructor);
+
+         // Verify that the findById method of the repository was called once
+         verify(instructorRepository, times(1)).findById(numInstructor);
+     }
+     @Test
+     void testAddInstructorAndAssignToCourse() {
+         Instructor instructor = new Instructor(); // create an instructor object
+         long numCourse = 1L;
+
+         Course course = new Course(); // create a course object
+
+         // Mocking the behavior of the repository
+         when(courseRepository.findById(numCourse)).thenReturn(Optional.of(course));
+         when(instructorRepository.save(instructor)).thenReturn(instructor);
+
+         // Call the method and verify the behavior
+         Instructor result = instructorServices.addInstructorAndAssignToCourse(instructor, numCourse);
+
+         // Assert the result
+         assertNotNull(result);
+         assertTrue(result.getCourses().contains(course));
+
+         // Verify that the findById and save methods of the repositories were called once each
+         verify(courseRepository, times(1)).findById(numCourse);
+         verify(instructorRepository, times(1)).save(instructor);
+     }
 }
