@@ -16,9 +16,10 @@ pipeline {
                 sh 'mvn clean package -DskipTests '
             }
         }
-     stage('Test with Maven') {
+     stage('Test Junit/Mockito') {
                                steps {
                                        sh 'mvn test'
+                                       sh 'mvn jacoco:report'
                                      }
                                  }
 
@@ -63,7 +64,7 @@ pipeline {
         success {
             mail to: "bensaadadhia9@gmail.com",
             subject: "Pipeline Backend Success",
-            body: " project StationSki  Backend : Success on job ${env.JOB_NAME}, Build Num: ${env.BUILD_NUMBER}, Build URL: ${env.BUILD_URL}"
+            body: " project StationSki  Backend : Success on job ${env.JOB_NAME}, Build Num: ${env.BUILD_NUMBER}"
         }
         failure {
             mail to: "bensaadadhia9@gmail.com",
