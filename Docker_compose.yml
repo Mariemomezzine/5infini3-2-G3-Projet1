@@ -1,0 +1,43 @@
+version: "2.4"
+  #-------------------------------- volumes----------------------------------------
+
+#--------------------------------services----------------------------------------
+services:
+
+  db:
+    container_name: mysql
+    image: mysql
+    cap_add:
+      - SYS_NICE
+    restart: always
+    environment:
+
+      MYSQL_DATABASE: 'stationSki'
+      MYSQL_ROOT_PASSWORD: ''  # Set to an empty string for an empty password
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+
+    ports:
+      - '3306:3306'
+    volumes:
+      - mysql:/var/lib/mysql
+      - $PWD/mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
+
+
+
+  spring_app:
+    container_name: mariemmk-5infini2-g3-stationski
+    image: mariemmk-5infini2-g3-stationski:v62
+    restart: on-failure
+    build: .
+    ports:
+      - 8089:8089
+
+    depends_on:
+      - db
+    environment:
+      - spring.datasource.url=jdbc:mysql://db:3306/stationSki?useSSL=false
+      - spring.datasource.username=root
+      - spring.datasource.password=
+volumes:
+  mysql:
+    driver: local
