@@ -25,8 +25,8 @@ services:
 
 
   spring_app:
-    container_name: mariemmk-5infini2-g3-stationski
-    image: mariemmk-5infini2-g3-stationski:v62
+    container_name: mariemmk059-5infini2-g3-stationski
+    image: mariemmk059-5infini2-g3-stationski:v62
     restart: on-failure
     build: .
     ports:
