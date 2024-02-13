@@ -61,10 +61,14 @@ pipeline {
 
     post {
         success {
-            echo 'Build successfully'
+            mail to: "bensaadadhia9@gmail.com",
+            subject: "Pipeline Backend Success",
+            body: " project StationSki  Backend : Success on job ${env.JOB_NAME}, Build Num: ${env.BUILD_NUMBER}, Build URL: ${env.BUILD_URL}"
         }
         failure {
-            echo 'failed '
+            mail to: "bensaadadhia9@gmail.com",
+             subject: "Pipeline backend Failure",
+             body: "project StationSki  Backend : Failure on job ${env.JOB_NAME}, Build Num: ${env.BUILD_NUMBER}, Build URL: ${env.BUILD_URL} "
         }
     }
     }
